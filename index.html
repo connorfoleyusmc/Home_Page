@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connor Foley | Personal Website</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      /* Columbia Blue Palette */
+      --columbia-blue: #C4D8E2;
+      --columbia-blue-dark: #9BBECF;
+      --navy-primary: #1D2A44;
+      --navy-secondary: #2C3E60;
+      --bg-light: #F8FAFC;
+      --card-bg: #FFFFFF;
+      --text-dark: #1E293B;
+      --text-muted: #64748B;
+      --border-color: #E2E8F0;
+      --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-dark);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    /* Streamlined Navigation Header */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+    }
+
+    .nav-container {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .brand-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--navy-primary);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-muted);
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--navy-primary);
+    }
+
+    /* Container */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(135deg, var(--columbia-blue) 0%, #E2EEF4 100%);
+      border-radius: 12px;
+      padding: 3rem 2.5rem;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      color: var(--navy-primary);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero p {
+      font-size: 1.15rem;
+      color: var(--navy-secondary);
+      font-weight: 500;
+      margin-bottom: 1.5rem;
+    }
+
+    .contact-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.25rem;
+      font-size: 0.95rem;
+    }
+
+    .contact-item a {
+      color: var(--navy-primary);
+      font-weight: 600;
+      text-decoration: none;
+      border-bottom: 2px solid var(--columbia-blue-dark);
+      padding-bottom: 1px;
+      transition: border-color 0.2s ease;
+    }
+
+    .contact-item a:hover {
+      border-color: var(--navy-primary);
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 3.5rem;
+    }
+
+    .section-header {
+      font-size: 1.5rem;
+      color: var(--navy-primary);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--columbia-blue);
+      letter-spacing: -0.02em;
+    }
+
+    /* Dynamic Grid Layout for Experience & Education Tiles */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+    }
+
+    .card-header {
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--navy-primary);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-subtitle {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--navy-secondary);
+      margin-bottom: 0.25rem;
+    }
+
+    .card-meta {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+    }
+
+    .card-list {
+      list-style-type: disc;
+      padding-left: 1.2rem;
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .card-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .card-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Additional Info List Styling */
+    .info-card {
+      background-color: var(--card-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      padding: 1.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    .info-list {
+      list-style: none;
+    }
+
+    .info-list li {
+      position: relative;
+      padding-left: 1.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+
+    .info-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .info-list li::before {
+      content: "•";
+      color: var(--navy-secondary);
+      font-weight: bold;
+      font-size: 1.2rem;
+      position: absolute;
+      left: 0;
+      top: -0.1rem;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+
+      .hero {
+        padding: 2rem 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .grid-container {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="nav-container">
+      <a href="#" class="brand-title">Connor Foley</a>
+      <ul class="nav-links">
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
+        <li><a href="#additional-info">Additional Info</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="container">
+    
+    <header class="hero">
+      <h1>Connor Foley</h1>
+      <p>MBA Candidate at Columbia Business School | Experienced Marine Corps Officer</p>
+      <div class="contact-bar">
+        <div class="contact-item">
+          <strong>Email:</strong> <a href="mailto:Cfoley28@gsb.columbia.edu">Cfoley28@gsb.columbia.edu</a>
+        </div>
+        <div class="contact-item">
+          <strong>Phone:</strong> <a href="tel:9044850673">904-485-0673</a>
+        </div>
+        <div class="contact-item">
+          <strong>LinkedIn:</strong> <a href="https://linkedin.com/in/connor-foley-200ba9345" target="_blank" rel="noopener noreferrer">linkedin.com/in/connor-foley-200ba9345</a>
+        </div>
+      </div>
+    </header>
+
+    <section id="experience">
+      <h2 class="section-header">Experience</h2>
+      <div class="grid-container">
+
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3 class="card-title">United States Marine Corps</h3>
+              <div class="card-subtitle">Company Commander / Regimental Logistics Officer (Captain)</div>
+              <div class="card-subtitle" style="font-weight: 400; font-style: italic;">Combat Logistics Regiment 1</div>
+              <div class="card-meta">
+                <span>Camp Pendleton, CA</span>
+                <span>2025 – 2026</span>
+              </div>
+            </div>
+            <ul class="card-list">
+              <li>Supervised, trained, and directed 200+ Marines and Sailors across all tactical, operational, and administrative functions to sustain high unit deployment readiness.</li>
+              <li>Led the organization's facilities-improvement initiative, earning recognition as the most impactful effort across I Marine Expeditionary Force and securing $5K for additional improvements.</li>
+              <li>Employed and managed operational personnel across multi-country areas of responsibility to support joint and international military operations.</li>
+              <li>Identified a critical medical coverage gap and designed a cross-functional staffing and logistics solution that provided continuous 24-hour medical coverage throughout a seven-week training exercise.</li>
+              <li>Developed and executed a sustainment plan supporting 4,200+ personnel across 20+ units; launched dining operations two days ahead of schedule.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3 class="card-title">United States Marine Corps</h3>
+              <div class="card-subtitle">Logistics Officer (First Lieutenant – Captain)</div>
+              <div class="card-subtitle" style="font-weight: 400; font-style: italic;">1st Maintenance Battalion</div>
+              <div class="card-meta">
+                <span>Darwin, Australia</span>
+                <span>2024 – 2025</span>
+              </div>
+            </div>
+            <ul class="card-list">
+              <li>Coordinated international supply chain operations with the Australian Defence Force and national government agencies for procurement, compliance, and transportation.</li>
+              <li>Led, trained, and mentored 40+ Marines spanning 13 distinct occupational specialties to fulfill maintenance objectives.</li>
+              <li>Built a predictive maintenance model with a 2.2% average forecast error across 1,000 assets, providing leadership actionable insights to identify readiness gaps and prioritize maintenance resources.</li>
+              <li>Oversaw full maintenance lifecycle and inventory control procedures for all unit ordnance assets and managed seven equipment accounts valued at $6M+.</li>
+              <li>Promoted to Captain and selected to take command of HQ Company, Combat Logistics Regiment 1.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3 class="card-title">United States Marine Corps</h3>
+              <div class="card-subtitle">Logistics &amp; Operations Officer (Second Lieutenant – First Lieutenant)</div>
+              <div class="card-subtitle" style="font-weight: 400; font-style: italic;">Multiple Units</div>
+              <div class="card-meta">
+                <span>VA, FL, NC, CA</span>
+                <span>2021 – 2024</span>
+              </div>
+            </div>
+            <ul class="card-list">
+              <li>Organized equipment and personnel to stand up a new Motor Transport Platoon, managing tactical vehicle allocation and operational workflows.</li>
+              <li>Selected to participate in a Colonel-level staff planning exercise and earned assignment to high-priority overseas deployment forces in Australia.</li>
+              <li>Achieved Fighter Jet qualifying scores during Navy Primary Flight Training, logging 55+ flight hours.</li>
+              <li>Served as Anti-Terrorism/Force Protection Officer, conducting security assessments and implementing defensive measures for military assets.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3 class="card-title">Florida State University</h3>
+              <div class="card-subtitle">Geographic Information System (GIS) Lab Supervisor</div>
+              <div class="card-meta">
+                <span>Tallahassee, FL</span>
+                <span>2016 – 2020</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="section-header">Education</h2>
+      <div class="grid-container">
+
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3 class="card-title">Columbia Business School</h3>
+              <div class="card-subtitle">Master of Business Administration (MBA)</div>
+              <div class="card-meta">
+                <span>New York, NY</span>
+                <span>May 2028</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div>
+            <div class="card-header">
+              <h3 class="card-title">Florida State University</h3>
+              <div class="card-subtitle">Bachelor of Science (BS), Finance</div>
+              <div class="card-meta">
+                <span>Tallahassee, FL</span>
+                <span>2016 – 2020</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section id="additional-info">
+      <h2 class="section-header">Additional Information</h2>
+      <div class="info-card">
+        <ul class="info-list">
+          <li><strong>Certifications &amp; Honors:</strong> Logistics Officer Course Honor Graduate</li>
+          <li><strong>Flight Experience:</strong> 55+ Flight hours (Single Engine)</li>
+          <li><strong>Certifications:</strong> SCUBA Certified</li>
+          <li><strong>Military Decorations:</strong> Navy and Marine Corps Achievement Medal, Navy and Marine Corps Commendation Medal</li>
+        </ul>
+      </div>
+    </section>
+
+  </div>
+
+</body>
+</html>
